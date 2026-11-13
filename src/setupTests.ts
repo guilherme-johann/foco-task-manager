@@ -1,14 +1,14 @@
-// Adds jest-dom's DOM matchers (toBeInTheDocument, toHaveTextContent, ...) to Vitest's expect.
+/** Add DOM matchers to Vitest. */
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
 
-// Testing Library only cleans up automatically when Vitest globals are enabled.
+/** Vitest globals are disabled, so clean up explicitly. */
 afterEach(() => {
   cleanup();
 });
 
-// jsdom doesn't implement matchMedia, which Ionic uses for platform and dark mode checks.
+/** Ionic needs matchMedia, which jsdom does not implement. */
 window.matchMedia =
   window.matchMedia ||
   function (query: string): MediaQueryList {

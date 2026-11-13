@@ -2,11 +2,15 @@
 
 # dependencies
 /node_modules
+/.tooling/
+*.jks
+*.keystore
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+/artifacts/
 
 # production
 /dist

@@ -1,7 +1,7 @@
 {
-  "name": "task-list",
+  "name": "foco-task-manager",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,13 +15,21 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "npm run build && playwright test",
+    "test:android": "node scripts/android-smoke.mjs",
+    "android:sync": "npm run build && cap sync android",
+    "android:open": "cap open android",
+    "android:run": "npm run android:sync && cap run android",
+    "android:apk": "npm run android:sync && cd android && gradlew.bat assembleDebug",
+    "android:live": "cap run android --live-reload --host 10.0.2.2 --port 5173"
   },
   "dependencies": {
+    "@capacitor/android": "8.6.2",
     "@capacitor/app": "8.1.2",
     "@capacitor/core": "8.6.2",
     "@capacitor/haptics": "8.0.2",
     "@capacitor/keyboard": "8.0.6",
+    "@capacitor/preferences": "8.0.1",
     "@capacitor/status-bar": "8.0.4",
     "@ionic/react": "^9.0.0",
     "@ionic/react-router": "^9.0.0",
@@ -56,5 +64,5 @@
     "vitest": "^5.1.0"
   },
   "prettier": "@ionic/prettier-config",
-  "description": "An Ionic project"
+  "description": "Foco — gerenciador acadêmico de tarefas com Ionic React e Capacitor"
 }

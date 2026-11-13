@@ -1,5 +1,5 @@
 {
-  "name": "task-list",
+  "name": "foco-task-manager",
   "integrations": {
     "capacitor": {}
   },
